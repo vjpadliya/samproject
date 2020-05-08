@@ -37,4 +37,6 @@ The script performs certain transformations on the original data set to generate
     b. Group dataset from step4 by "subjectid" and "activity".
     c. Take mean of each column except the columns grouped by on.
     d. Store result in new variable named tidydataset
-    e. Write tidydataset to txt file
+    e. Write tidydataset to txt file "tidydataset.txt"
+    
+Details transformations on original data set and about the variable names and activity labels are listed in "CodeBook.txt" file
