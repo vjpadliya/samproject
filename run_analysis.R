@@ -1,15 +1,15 @@
 ## STEP 1 - Merge the training and the test sets to create one data set.
 # read test data files
-xtest<-read.table("./test/X_test.txt")
-subtest<-read.table("./test/subject_test.txt")
-ytest<-read.table("./test/y_test.txt")
+xtest<-read.table("./UCI HAR Dataset/test/X_test.txt")
+subtest<-read.table("./UCI HAR Dataset/test/subject_test.txt")
+ytest<-read.table("./UCI HAR Dataset/test/y_test.txt")
 # append subject list and activity labels to test data
 xtestfull<-cbind(subtest, ytest, xtest)
 
 # read train data files
-xtrain<-read.table("./train/X_train.txt") 
-ytrain<-read.table("./train/y_train.txt") 
-subtrain<-read.table("./train/subject_train.txt")
+xtrain<-read.table("./UCI HAR Dataset/train/X_train.txt") 
+ytrain<-read.table("./UCI HAR Dataset/train/y_train.txt") 
+subtrain<-read.table("./UCI HAR Dataset/train/subject_train.txt")
 # append subject list and activity labels to train data
 xtrainfull<-cbind(subtrain, ytrain, xtrain) 
 
@@ -20,7 +20,7 @@ mergeddata<-rbind(xtrainfull, xtestfull)
 
 ## STEP 2 - Extract mean and standard deviation for each measurement.
 # read features.txt to extract column no.s with mean() and std() measurements
-features<-read.table("./features.txt")
+features<-read.table("./UCI HAR Dataset/features.txt")
 # find column nos. for mean() and std() measurements
 # result vector of column no.s will be used to extract subset from dataset
 meanstdcols<-features[grep("-(mean|std)\\(\\)",features[,2]),1]
@@ -33,7 +33,7 @@ mergedsubset<-mergeddata[,c(1,2, (meanstdcols+2))]
 
 ## STEP 3 - Use descriptive activity names to name the activities in the data set
 # read activity_labels.txt to get descriptive activity names
-activity<-read.table("./activity_labels.txt")
+activity<-read.table("./UCI HAR Dataset/activity_labels.txt")
 # replace activity labels with descriptive activity names in mergedsubset
 mergedsubset[,2] <- activity[mergedsubset[,2], 2]
 
